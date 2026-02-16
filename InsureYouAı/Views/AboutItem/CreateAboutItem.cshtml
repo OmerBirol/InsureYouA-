@@ -1,0 +1,24 @@
+﻿@using InsureYouAıNew.Entities
+@model AboutItem
+@{
+    ViewData["Title"] = "CreateAboutItem";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Yeni hakkımda madde girişi</h5>
+
+        </div>
+        <form  method="post">
+            <label>İçerik</label>
+            <input asp-for="Detail" class="form-control" />
+            <br />
+            <button class="btn btn-primary">Alanı kaydet</button>
+        </form>
+    </div>
+</div>

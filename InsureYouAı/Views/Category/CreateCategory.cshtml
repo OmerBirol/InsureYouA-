@@ -1,0 +1,20 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "CreateCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Yeni Sigorta kategori girişi</h5>
+            
+        </div>
+        <form asp-action="CreateCategory" method="post">
+            <label>Kategori adı</label>
+            <input asp-for="CategoryName" class="form-control" />
+            <br />
+            <button class="btn btn-primary">Kategoriyi kaydet</button>
+        </form>
+    </div>
+</div>
