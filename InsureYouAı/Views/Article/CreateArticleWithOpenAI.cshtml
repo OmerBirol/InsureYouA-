@@ -1,0 +1,29 @@
+
+@{
+    ViewData["Title"] = "CreateArticleWithGemini";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center">
+            <h5 class="mb-0">Gemini ile yapay zeka destekli makale oluştur</h5>
+            
+        </div>
+        <form asp-action="CreateArticleWithOpenAI" method="post">
+            <label>Makale başlığı özeti ve anahtar kelimeler</label>
+            <input name="prompt" class="form-control" />
+            <br />
+            <button class="btn btn-primary">AI ile makale oluştur</button>
+        </form>
+        <br /> <br />
+        @if (ViewBag.article != null)
+        {
+            <hr />
+            <h5>Oluşturulan AI destekli Makale</h5>
+            <div class="alert alert-success">
+                @Html.Raw(ViewBag.article.ToString())
+            </div>
+        }
+    </div>
+</div>

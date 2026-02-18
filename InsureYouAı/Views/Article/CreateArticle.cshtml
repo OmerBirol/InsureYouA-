@@ -1,4 +1,4 @@
-﻿@model InsureYouAı.Entities.Article
+@model InsureYouAı.Entities.Article
 @{
     ViewData["Title"] = "CreateArticle";
     Layout = "~/Views/AdminLayout/Index.cshtml";
@@ -6,6 +6,19 @@
 
 <form asp-action="CreateArticle" method="post">
     @Html.AntiForgeryToken()
+    @if (ViewBag.HasCategories is bool hasCategories && !hasCategories)
+    {
+        <div class="alert alert-warning">
+            Kategori bulunamadı. Önce kategori ekleyin, sonra makale oluşturabilirsiniz.
+        </div>
+    }
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            Lütfen aşağıdaki hataları düzeltin.
+        </div>
+    }
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
     <div class="mb-3">
         <label asp-for="Title" class="form-label">Başlık</label>
@@ -24,6 +37,19 @@
     <div class="mb-3">
         <label asp-for="Content" class="form-label">İçerik</label>
         <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CoverImageUrl" class="form-label">Kapak görseli (URL)</label>
+        <input asp-for="CoverImageUrl" class="form-control" />
+        <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MainCoverImageUrl" class="form-label">Ana kapak görseli (URL)</label>
+        <input asp-for="MainCoverImageUrl" class="form-control" />
+        <span asp-validation-for="MainCoverImageUrl" class="text-danger"></span>
     </div>
 
     <button class="btn btn-primary">Kaydet</button>

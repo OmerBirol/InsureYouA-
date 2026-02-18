@@ -1,4 +1,4 @@
-﻿
+
 @{
     Layout = null;
 }
@@ -42,6 +42,7 @@
     </div>
    
     @await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
+    @RenderSection("Scripts", required: false)
 
 
 
